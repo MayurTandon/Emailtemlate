@@ -33,7 +33,7 @@
         {
           "name": "salesforce-1",
           "type": "normal",
-          "content": {}
+          "content": {};;
         },
         {
           "name": "salesforce-2",
