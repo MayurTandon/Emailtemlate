@@ -1,0 +1,234 @@
+ {
+  "tray_export_version": 4,
+  "export_type": "workflow",
+  "workflows": [
+    {
+      "id": "b4222a11-ec72-4050-83fc-1ecd8ba3400e",
+      "created": "2021-12-31T07:10:48.810721Z",
+      "workspace_id": "91f4b273-5907-4536-b741-4b056646e02b",
+      "creator": "3187a563-5419-4c46-a302-acd8e9deda65",
+      "version": {
+        "id": "ce19a893-3f49-41b8-85c0-6f2c5407f3a1",
+        "created": "2022-01-03T04:49:57.792788Z"
+      },
+      "title": "Chatter",
+      "enabled": true,
+      "tags": [],
+      "settings": {
+        "config": {},
+        "input_schema": {},
+        "output_schema": {}
+      },
+      "steps_structure": [
+        {
+          "name": "trigger",
+          "type": "normal",
+          "content": {}
+        },
+        {
+          "name": "file-helpers-1",
+          "type": "normal",
+          "content": {}
+        },
+        {
+          "name": "salesforce-1",
+          "type": "normal",
+          "content": {}
+        },
+        {
+          "name": "salesforce-2",
+          "type": "normal",
+          "content": {}
+        }
+      ],
+      "steps": {
+        "trigger": {
+          "title": "Manual Trigger",
+          "connector": {
+            "name": "noop",
+            "version": "1.0"
+          },
+          "operation": "trigger",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {}
+        },
+        "file-helpers-1": {
+          "title": "File Helpers",
+          "connector": {
+            "name": "file-helpers",
+            "version": "2.2"
+          },
+          "operation": "create_file",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "url": {
+              "type": "string",
+              "value": "https://imgd.aeplcdn.com/1056x594/n/cw/ec/40027/safari-exterior-right-front-three-quarter-2.jpeg?q=85&wm=1\n"
+            },
+            "name": {
+              "type": "string",
+              "value": "\n"
+            }
+          }
+        },
+        "salesforce-2": {
+          "title": "Salesforce",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "update_record",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "1b23a670-6482-438c-a2e1-7aeaf9bc0726",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "fields": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Type"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": ""
+                    }
+                  }
+                }
+              ]
+            },
+            "object": {
+              "type": "string",
+              "value": "FeedItem"
+            },
+            "object_id": {
+              "type": "jsonpath",
+              "value": "$.steps.salesforce-1.id"
+            }
+          }
+        },
+        "salesforce-1": {
+          "title": "Salesforce",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "create_record",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "1b23a670-6482-438c-a2e1-7aeaf9bc0726",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "fields": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "ParentId"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "00176000003PrsmAAC\n"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Body"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "Image Uploaded"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Type"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "Content"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Body"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.file-helpers-1.file"
+                    }
+                  }
+                }
+              ]
+            },
+            "object": {
+              "type": "string",
+              "value": "FeedItem"
+            }
+          }
+        }
+      },
+      "dependencies": []
+    }
+  ],
+  "projects": []
+}
