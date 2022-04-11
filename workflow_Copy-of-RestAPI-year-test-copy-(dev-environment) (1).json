@@ -1,0 +1,399 @@
+ {
+  "tray_export_version": 4,
+  "export_type": "workflow",
+  "workflows": [
+    {
+      "id": "ee71695e-89fc-4bdf-ab1e-d26786d38c57",
+      "created": "2021-12-09T07:05:03.151254Z",
+      "workspace_id": "3187a563-5419-4c46-a302-acd8e9deda65",
+      "creator": "3187a563-5419-4c46-a302-acd8e9deda65",
+      "version": {
+        "id": "60e700cd-95b0-40df-ba6b-3ff1c3998334",
+        "created": "2021-12-09T07:18:01.378426Z"
+      },
+      "title": "Copy of RestAPI year test copy (dev environment)",
+      "enabled": true,
+      "tags": [],
+      "settings": {
+        "config": {},
+        "input_schema": {},
+        "output_schema": {}
+      },
+      "steps_structure": [
+        {
+          "name": "trigger",
+          "type": "normal",
+          "content": {}
+        },
+        {
+          "name": "http-client-3",
+          "type": "normal",
+          "content": {}
+        },
+        {
+          "name": "object-helpers-1",
+          "type": "normal",
+          "content": {}
+        },
+        {
+          "name": "storage-1",
+          "type": "normal",
+          "content": {}
+        },
+        {
+          "name": "text-helpers-1",
+          "type": "normal",
+          "content": {}
+        },
+        {
+          "name": "http-client-2",
+          "type": "normal",
+          "content": {}
+        }
+      ],
+      "steps": {
+        "http-client-3": {
+          "title": "Post Request",
+          "connector": {
+            "name": "http-client",
+            "version": "5.5"
+          },
+          "operation": "post_request",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "ab190f32-b97b-4c4c-96e5-b50a73822e2e",
+            "title": "Test_my_HTTP",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/icons/placeholder.png"
+            },
+            "scopes": [],
+            "service_name": "Lo80m_my_http_test",
+            "service_version": 1
+          },
+          "properties": {
+            "follow_authorization_header": {
+              "type": "boolean",
+              "value": false
+            },
+            "body": {
+              "type": "object",
+              "value": {
+                "form_urlencoded": {
+                  "type": "object",
+                  "value": {
+                    "client_id": {
+                      "type": "jsonpath",
+                      "value": "$.auth.client_id"
+                    },
+                    "grant_type": {
+                      "type": "string",
+                      "value": "client_credentials"
+                    },
+                    "client_secret": {
+                      "type": "jsonpath",
+                      "value": "$.auth.client_secret"
+                    },
+                    "scope": {
+                      "type": "string",
+                      "value": "uni:vehicles:read"
+                    }
+                  }
+                }
+              }
+            },
+            "queries": {
+              "type": "array",
+              "value": []
+            },
+            "headers": {
+              "type": "array",
+              "value": []
+            },
+            "auth": {
+              "type": "object",
+              "value": {
+                "none": {
+                  "type": "null",
+                  "value": null
+                }
+              }
+            },
+            "follow_redirect": {
+              "type": "boolean",
+              "value": false
+            },
+            "parse_response": {
+              "type": "string",
+              "value": "true"
+            },
+            "follow_keep_method": {
+              "type": "boolean",
+              "value": false
+            },
+            "case_sensitive_headers": {
+              "type": "boolean",
+              "value": false
+            },
+            "url": {
+              "type": "string",
+              "value": "https://dev-auth.peddle.com/identity-provider/connect/token"
+            },
+            "reject_unauthorized": {
+              "type": "boolean",
+              "value": true
+            },
+            "status_code": {
+              "type": "object",
+              "value": {
+                "range": {
+                  "type": "object",
+                  "value": {
+                    "from": {
+                      "type": "integer",
+                      "value": 200
+                    },
+                    "to": {
+                      "type": "integer",
+                      "value": 299
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "text-helpers-1": {
+          "title": "Text Helpers",
+          "connector": {
+            "name": "text-helpers",
+            "version": "3.0"
+          },
+          "operation": "concatenate",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "separator": {
+              "type": "string",
+              "value": ""
+            },
+            "values": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "Bearer "
+                },
+                {
+                  "type": "jsonpath",
+                  "value": "$.steps.storage-1.value"
+                }
+              ]
+            }
+          }
+        },
+        "storage-1": {
+          "title": "Data Storage",
+          "connector": {
+            "name": "storage",
+            "version": "1.4"
+          },
+          "operation": "get",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "scope": {
+              "type": "string",
+              "value": "Current Run"
+            },
+            "key": {
+              "type": "string",
+              "value": "result"
+            },
+            "default_value": {
+              "type": "jsonpath",
+              "value": "$.steps.object-helpers-1.result"
+            }
+          }
+        },
+        "trigger": {
+          "title": "Manual Trigger",
+          "connector": {
+            "name": "noop",
+            "version": "1.0"
+          },
+          "operation": "trigger",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {}
+        },
+        "http-client-2": {
+          "title": "Get Request",
+          "connector": {
+            "name": "http-client",
+            "version": "5.5"
+          },
+          "operation": "get_request",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "ab190f32-b97b-4c4c-96e5-b50a73822e2e",
+            "title": "Test_my_HTTP",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/icons/placeholder.png"
+            },
+            "scopes": [],
+            "service_name": "Lo80m_my_http_test",
+            "service_version": 1
+          },
+          "properties": {
+            "follow_authorization_header": {
+              "type": "boolean",
+              "value": false
+            },
+            "headers": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Authorization"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.text-helpers-1.result"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "If-None-Match"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "200"
+                    }
+                  }
+                }
+              ]
+            },
+            "auth": {
+              "type": "object",
+              "value": {
+                "oauth2": {
+                  "type": "object",
+                  "value": {
+                    "headers": {
+                      "type": "object",
+                      "value": {
+                        "access_token": {
+                          "type": "jsonpath",
+                          "value": "$.steps.text-helpers-1.result"
+                        }
+                      }
+                    }
+                  }
+                },
+                "oauth_refresh": {
+                  "type": "object",
+                  "value": {
+                    "status_code": {
+                      "type": "number"
+                    },
+                    "headers": {
+                      "type": "object",
+                      "value": {}
+                    },
+                    "body": {
+                      "type": "string",
+                      "value": ""
+                    }
+                  }
+                }
+              }
+            },
+            "follow_redirect": {
+              "type": "boolean",
+              "value": false
+            },
+            "parse_response": {
+              "type": "string",
+              "value": "true"
+            },
+            "follow_keep_method": {
+              "type": "boolean",
+              "value": false
+            },
+            "case_sensitive_headers": {
+              "type": "boolean",
+              "value": false
+            },
+            "url": {
+              "type": "string",
+              "value": "https://dev-service.peddle.com/universal/v1/years"
+            },
+            "reject_unauthorized": {
+              "type": "boolean",
+              "value": true
+            },
+            "status_code": {
+              "type": "object",
+              "value": {
+                "range": {
+                  "type": "object",
+                  "value": {
+                    "from": {
+                      "type": "integer",
+                      "value": 200
+                    },
+                    "to": {
+                      "type": "integer",
+                      "value": 299
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "object-helpers-1": {
+          "title": "Object Helpers",
+          "connector": {
+            "name": "object-helpers",
+            "version": "4.1"
+          },
+          "operation": "get_value_by_key",
+          "output_schema": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "null"
+              }
+            }
+          },
+          "error_handling": {},
+          "properties": {
+            "source": {
+              "type": "jsonpath",
+              "value": "$.steps.http-client-3.response.body"
+            },
+            "key": {
+              "type": "string",
+              "value": "access_token"
+            }
+          }
+        }
+      },
+      "dependencies": []
+    }
+  ],
+  "projects": []
+}
