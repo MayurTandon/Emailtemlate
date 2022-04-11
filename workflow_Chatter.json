@@ -77,7 +77,7 @@
           "title": "Salesforce",
           "connector": {
             "name": "salesforce",
-            "version": "8.6"
+            "version": "8.6";;
           },
           "operation": "update_record",
           "output_schema": {},
