@@ -1,0 +1,190 @@
+ {
+  "tray_export_version": 4,
+  "export_type": "workflow",
+  "workflows": [
+    {
+      "id": "ff7e91a7-805a-43a7-9fa4-859ef4e440a7",
+      "created": "2021-12-02T04:33:47.560271Z",
+      "workspace_id": "91f4b273-5907-4536-b741-4b056646e02b",
+      "creator": "3187a563-5419-4c46-a302-acd8e9deda65",
+      "version": {
+        "id": "f9263357-5b20-4219-a7e2-7a5af90b756f",
+        "created": "2021-12-02T05:04:03.505654Z"
+      },
+      "title": "Rest API Test",
+      "enabled": true,
+      "tags": [],
+      "settings": {
+        "config": {},
+        "input_schema": {},
+        "output_schema": {}
+      },
+      "steps_structure": [
+        {
+          "name": "trigger",
+          "type": "normal",
+          "content": {}
+        },
+        {
+          "name": "http-client-1",
+          "type": "normal",
+          "content": {}
+        },
+        {
+          "name": "http-client-2",
+          "type": "normal",
+          "content": {}
+        }
+      ],
+      "steps": {
+        "trigger": {
+          "title": "Manual Trigger",
+          "connector": {
+            "name": "noop",
+            "version": "1.0"
+          },
+          "operation": "trigger",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {}
+        },
+        "http-client-1": {
+          "title": "Dog Breed - Public RestAPI",
+          "connector": {
+            "name": "http-client",
+            "version": "5.5"
+          },
+          "operation": "get_request",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "follow_authorization_header": {
+              "type": "boolean",
+              "value": false
+            },
+            "auth": {
+              "type": "object",
+              "value": {
+                "none": {
+                  "type": "null",
+                  "value": null
+                }
+              }
+            },
+            "follow_redirect": {
+              "type": "boolean",
+              "value": false
+            },
+            "parse_response": {
+              "type": "string",
+              "value": "true"
+            },
+            "follow_keep_method": {
+              "type": "boolean",
+              "value": false
+            },
+            "case_sensitive_headers": {
+              "type": "boolean",
+              "value": false
+            },
+            "url": {
+              "type": "string",
+              "value": "https://dog.ceo/api/breeds/list/all"
+            },
+            "reject_unauthorized": {
+              "type": "boolean",
+              "value": true
+            },
+            "status_code": {
+              "type": "object",
+              "value": {
+                "range": {
+                  "type": "object",
+                  "value": {
+                    "from": {
+                      "type": "integer",
+                      "value": 200
+                    },
+                    "to": {
+                      "type": "integer",
+                      "value": 299
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "http-client-2": {
+          "title": "RestAPI - Cat",
+          "connector": {
+            "name": "http-client",
+            "version": "5.5"
+          },
+          "operation": "get_request",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "follow_authorization_header": {
+              "type": "boolean",
+              "value": false
+            },
+            "auth": {
+              "type": "object",
+              "value": {
+                "none": {
+                  "type": "null",
+                  "value": null
+                }
+              }
+            },
+            "follow_redirect": {
+              "type": "boolean",
+              "value": false
+            },
+            "parse_response": {
+              "type": "string",
+              "value": "true"
+            },
+            "follow_keep_method": {
+              "type": "boolean",
+              "value": false
+            },
+            "case_sensitive_headers": {
+              "type": "boolean",
+              "value": false
+            },
+            "url": {
+              "type": "string",
+              "value": "https://cat-fact.herokuapp.com/facts/"
+            },
+            "reject_unauthorized": {
+              "type": "boolean",
+              "value": true
+            },
+            "status_code": {
+              "type": "object",
+              "value": {
+                "range": {
+                  "type": "object",
+                  "value": {
+                    "from": {
+                      "type": "integer",
+                      "value": 200
+                    },
+                    "to": {
+                      "type": "integer",
+                      "value": 299
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "dependencies": []
+    }
+  ],
+  "projects": []
+}
