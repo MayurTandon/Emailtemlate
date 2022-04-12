@@ -19,6 +19,7 @@
         Change 1.0
       ],
       "settings": {
+       Change 2
         "config": {
           "text": "*Offer ID <https://peddle--devsndbox.my.salesforce.com/{$.steps.salesforce-2.records[0].Id}|  {$.steps.salesforce-2.records[0].Name} > * ePOA received "
         },
