@@ -68,7 +68,7 @@
             "name": "slack",
             "version": "8.1"
           },
-          "operation": "send_message",
+          Change 3,
           "output_schema": {},
           "error_handling": {},
           "authentication": {
