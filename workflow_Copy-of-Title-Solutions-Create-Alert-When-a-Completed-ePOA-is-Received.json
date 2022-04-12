@@ -1,6 +1,4 @@
  {
-  Change 1 
-  Change 4
   "tray_export_version": 4,
   "export_type": "workflow",
   "workflows": [
@@ -17,10 +15,9 @@
       "enabled": true,
       "tags": [
         "title solutions",
-        Change 1.0
+        "automation guild"
       ],
       "settings": {
-       Change 2
         "config": {
           "text": "*Offer ID <https://peddle--devsndbox.my.salesforce.com/{$.steps.salesforce-2.records[0].Id}|  {$.steps.salesforce-2.records[0].Name} > * ePOA received "
         },
@@ -69,7 +66,7 @@
             "name": "slack",
             "version": "8.1"
           },
-          Change 3,
+          "operation": "send_message",
           "output_schema": {},
           "error_handling": {},
           "authentication": {
