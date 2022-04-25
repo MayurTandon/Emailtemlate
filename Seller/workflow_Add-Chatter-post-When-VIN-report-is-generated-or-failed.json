@@ -1,0 +1,1906 @@
+ {
+  "tray_export_version": 4,
+  "export_type": "workflow",
+  "workflows": [
+    {
+      "id": "d83594ca-da1c-427f-924a-203e9bc01371",
+      "created": "2022-04-18T05:09:16.227096Z",
+      "workspace_id": "b745b1b1-0cad-412b-8ab0-8cd9864ee853",
+      "creator": "3187a563-5419-4c46-a302-acd8e9deda65",
+      "version": {
+        "id": "f0911fd6-930e-4d22-b7f4-1a20523be8c0",
+        "created": "2022-04-21T09:40:58.035205Z"
+      },
+      "title": "Add Chatter post - When VIN report is generated or failed",
+      "description": "This workflow will be adding a chatter post whenever VIN report is generated successfully or there is an error while trying to generate the VIN report.",
+      "enabled": true,
+      "tags": [
+        "salesforce",
+        "loyalty"
+      ],
+      "settings": {
+        "config": {},
+        "alerting_workflow_id": "1955b2e4-e863-496e-a4dc-4ed7a038b857",
+        "input_schema": {},
+        "output_schema": {}
+      },
+      "steps_structure": [
+        {
+          "name": "trigger",
+          "type": "normal",
+          "content": {}
+        },
+        {
+          "name": "call-workflow-1",
+          "type": "normal",
+          "content": {}
+        },
+        {
+          "name": "salesforce-13",
+          "type": "normal",
+          "content": {}
+        },
+        {
+          "name": "branch-1",
+          "type": "branch",
+          "content": {
+            "branch1": [
+              {
+                "name": "file-helpers-1",
+                "type": "normal",
+                "content": {}
+              },
+              {
+                "name": "date-time-helpers-2",
+                "type": "normal",
+                "content": {}
+              },
+              {
+                "name": "boolean-condition-1",
+                "type": "branch",
+                "content": {
+                  "true": [
+                    {
+                      "name": "script-1",
+                      "type": "normal",
+                      "content": {}
+                    },
+                    {
+                      "name": "date-time-helpers-1",
+                      "type": "normal",
+                      "content": {}
+                    },
+                    {
+                      "name": "boolean-condition-2",
+                      "type": "branch",
+                      "content": {
+                        "true": [
+                          {
+                            "name": "salesforce-1",
+                            "type": "normal",
+                            "content": {}
+                          },
+                          {
+                            "name": "salesforce-11",
+                            "type": "normal",
+                            "content": {}
+                          },
+                          {
+                            "name": "salesforce-12",
+                            "type": "normal",
+                            "content": {}
+                          }
+                        ],
+                        "false": [
+                          {
+                            "name": "salesforce-2",
+                            "type": "normal",
+                            "content": {}
+                          },
+                          {
+                            "name": "salesforce-9",
+                            "type": "normal",
+                            "content": {}
+                          },
+                          {
+                            "name": "salesforce-10",
+                            "type": "normal",
+                            "content": {}
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "false": [
+                    {
+                      "name": "boolean-condition-3",
+                      "type": "branch",
+                      "content": {
+                        "true": [
+                          {
+                            "name": "salesforce-3",
+                            "type": "normal",
+                            "content": {}
+                          },
+                          {
+                            "name": "salesforce-4",
+                            "type": "normal",
+                            "content": {}
+                          },
+                          {
+                            "name": "salesforce-5",
+                            "type": "normal",
+                            "content": {}
+                          }
+                        ],
+                        "false": [
+                          {
+                            "name": "salesforce-14",
+                            "type": "normal",
+                            "content": {}
+                          },
+                          {
+                            "name": "salesforce-15",
+                            "type": "normal",
+                            "content": {}
+                          },
+                          {
+                            "name": "salesforce-16",
+                            "type": "normal",
+                            "content": {}
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "__default__": [],
+            "branch2": [
+              {
+                "name": "date-time-helpers-3",
+                "type": "normal",
+                "content": {}
+              },
+              {
+                "name": "branch-2",
+                "type": "branch",
+                "content": {
+                  "__default__": [],
+                  "branch1": [
+                    {
+                      "name": "salesforce-6",
+                      "type": "normal",
+                      "content": {}
+                    }
+                  ],
+                  "branch2": [
+                    {
+                      "name": "salesforce-7",
+                      "type": "normal",
+                      "content": {}
+                    }
+                  ],
+                  "branch3": [
+                    {
+                      "name": "salesforce-8",
+                      "type": "normal",
+                      "content": {}
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "steps": {
+        "script-1": {
+          "title": "Format  Numbers",
+          "description": "Formatting the Last Reported Mileage, Current Mileage and Seller Expected Mileage as per the format of the Chatter Post",
+          "connector": {
+            "name": "script",
+            "version": "3.3"
+          },
+          "operation": "execute",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "variables": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "name": {
+                      "type": "string",
+                      "value": "LastReportedMileage"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.trigger.event_body.LastReportedMileage"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "name": {
+                      "type": "string",
+                      "value": "SellerReported"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-13.records[0].Mileage__c"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "name": {
+                      "type": "string",
+                      "value": "CurrentExpected"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.trigger.event_body.CurrentExpectedMileage"
+                    }
+                  }
+                }
+              ]
+            },
+            "script": {
+              "type": "string",
+              "value": "exports.step = function(input)\n{\n\nvar lastReported= input.LastReportedMileage;\n\nvar sellerReported=input.SellerReported;\n\nvar currentExpected = input.CurrentExpected;\n\nvar Obj = new Object();\n\nObj['lastReported']=format(lastReported);\n\nObj['sellerReported']=format(sellerReported);\n\nObj['currentExpected']=format(currentExpected);\n\n function format(x)\n{\n\nif (x>0 && x<10)\n{\nx=x.toString();\nx= '0' + x ;\n}\n\nelse\n{\nx=x.toString();\nx=x.replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");\n}\n\nreturn x; \n \n}\n\n\nreturn Obj;\n}"
+            },
+            "file_output": {
+              "type": "boolean",
+              "value": false
+            }
+          }
+        },
+        "boolean-condition-2": {
+          "title": "Checking Salvage Issue",
+          "description": "Boolean condition to check if any Salvage issue exist in the VIN by fetching the value of HasTitleIssue Flag.",
+          "connector": {
+            "name": "boolean-condition",
+            "version": "2.3"
+          },
+          "operation": "boolean_condition",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "conditions": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "value1": {
+                      "type": "jsonpath",
+                      "value": "$.steps.trigger.event_body.HasTitleIssue"
+                    },
+                    "comparison_type": {
+                      "type": "string",
+                      "value": "==="
+                    },
+                    "value2": {
+                      "type": "string",
+                      "value": "true"
+                    }
+                  }
+                }
+              ]
+            },
+            "strictness": {
+              "type": "string",
+              "value": "All"
+            }
+          }
+        },
+        "salesforce-8": {
+          "title": "Chatter - Request Timed Out",
+          "description": "Adding Chatter Post for the scenario when Vin error report code is REQUEST_TIMEOUT",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "create_record",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "fields": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "ParentId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-13.records[0].Id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Body"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "VIN report retrieval failed."
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "CreatedById"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.call-workflow-1.response.System_Id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "CreatedDate"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.date-time-helpers-3.result"
+                    }
+                  }
+                }
+              ]
+            },
+            "object": {
+              "type": "string",
+              "value": "FeedItem"
+            }
+          }
+        },
+        "salesforce-7": {
+          "title": "Chatter - Invalid VIN",
+          "description": "Adding Chatter Post for the scenario when Vin error report code is INVALID_VIN",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "create_record",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "fields": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "ParentId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-13.records[0].Id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Body"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "VIN report was not available."
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "CreatedById"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.call-workflow-1.response.System_Id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "CreatedDate"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.date-time-helpers-3.result"
+                    }
+                  }
+                }
+              ]
+            },
+            "object": {
+              "type": "string",
+              "value": "FeedItem"
+            }
+          }
+        },
+        "salesforce-12": {
+          "title": "Create Feed Attachment",
+          "description": "Creating feed attachment of the uploaded file to attach it in the Chatter Post",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "create_record",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "fields": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "RecordId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-11.id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "FeedEntityId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-1.id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Type"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "Content"
+                    }
+                  }
+                }
+              ]
+            },
+            "object": {
+              "type": "string",
+              "value": "FeedAttachment"
+            }
+          }
+        },
+        "call-workflow-1": {
+          "title": "Fetch System Id",
+          "description": "Calling the Salesforce Config workflow to fetch the id of System user",
+          "connector": {
+            "name": "call-workflow",
+            "version": "2.0"
+          },
+          "operation": "fire_and_wait_for_response",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "workflow_id": {
+              "type": "string",
+              "value": "2a07badc-4e07-4854-a358-c1d7e2bdd6d5"
+            },
+            "trigger_input": {
+              "type": "object",
+              "value": {}
+            }
+          }
+        },
+        "boolean-condition-1": {
+          "title": "Checking Mileage Issue",
+          "description": "Boolean condition to check if any Mileage issue exist in the VIN by fetching the value of HasMileageIssue Flag.",
+          "connector": {
+            "name": "boolean-condition",
+            "version": "2.3"
+          },
+          "operation": "boolean_condition",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "conditions": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "value1": {
+                      "type": "jsonpath",
+                      "value": "$.steps.trigger.event_body.HasMileageIssue"
+                    },
+                    "comparison_type": {
+                      "type": "string",
+                      "value": "==="
+                    },
+                    "value2": {
+                      "type": "string",
+                      "value": "true"
+                    }
+                  }
+                }
+              ]
+            },
+            "strictness": {
+              "type": "string",
+              "value": "All"
+            }
+          }
+        },
+        "salesforce-4": {
+          "title": "Uploading file from URL",
+          "description": "Uploading the file to Salesforce so that it can  be attached in the Chatter Post",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "upload_file",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "file": {
+              "type": "jsonpath",
+              "value": "$.steps.file-helpers-1.file"
+            }
+          }
+        },
+        "salesforce-16": {
+          "title": "Create Feed Attachment",
+          "description": "Creating feed attachment of the uploaded file to attach it in the Chatter Post",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "create_record",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "fields": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "RecordId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-15.id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "FeedEntityId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-14.id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Type"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "Content"
+                    }
+                  }
+                }
+              ]
+            },
+            "object": {
+              "type": "string",
+              "value": "FeedAttachment"
+            }
+          }
+        },
+        "salesforce-13": {
+          "title": "Seller Reported Mileage",
+          "description": "Fetching the Seller Reported Mileage from the Offer Id received in the event",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "find_records",
+          "output_schema": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer",
+                "title": "Total count"
+              },
+              "next_page_offset": {
+                "type": "string",
+                "title": "Next page offset"
+              },
+              "records": {
+                "title": "Offers",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "title": "Offer",
+                  "properties": {
+                    "Mileage__c": {
+                      "name": "Mileage__c",
+                      "type": "number",
+                      "title": "Mileage"
+                    },
+                    "Id": {
+                      "name": "Id",
+                      "type": "string",
+                      "title": "Offer ID"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "fields": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "Mileage__c"
+                },
+                {
+                  "type": "string",
+                  "value": "Id"
+                }
+              ]
+            },
+            "conditions_type": {
+              "type": "string",
+              "value": "Match all conditions"
+            },
+            "include_all_fields": {
+              "type": "boolean",
+              "value": false
+            },
+            "object": {
+              "type": "string",
+              "value": "Opportunity"
+            },
+            "conditions": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "field": {
+                      "type": "string",
+                      "value": "Name"
+                    },
+                    "operator": {
+                      "type": "string",
+                      "value": "Equal to"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.trigger.event_body.OfferID"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "salesforce-5": {
+          "title": "Create Feed Attachment",
+          "description": "Creating feed attachment of the uploaded file to attach it in the Chatter Post",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "create_record",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "fields": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "RecordId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-4.id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "FeedEntityId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-3.id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Type"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "Content"
+                    }
+                  }
+                }
+              ]
+            },
+            "object": {
+              "type": "string",
+              "value": "FeedAttachment"
+            }
+          }
+        },
+        "salesforce-1": {
+          "title": "Chatter - Mileage/Salvage",
+          "description": "Creating the chatter post body for scenario when both Salvage and Title Issues are found",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "create_record",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "fields": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Body"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "VIN report attached.\r\n\nPossible issues found.\n\n1. Last recorded mileage was {$.steps.script-1.result.lastReported} on {$.steps.date-time-helpers-1.result}. Current estimated mileage is {$.steps.script-1.result.currentExpected}. Seller reported mileage is {$.steps.script-1.result.sellerReported}.\n\n2. Salvage title detected.\n"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "ParentId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-13.records[0].Id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "CreatedById"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.call-workflow-1.response.System_Id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "CreatedDate"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.date-time-helpers-2.result"
+                    }
+                  }
+                }
+              ]
+            },
+            "object": {
+              "type": "string",
+              "value": "FeedItem"
+            }
+          }
+        },
+        "date-time-helpers-1": {
+          "title": "Formatting Date",
+          "description": "The date and time received would here be formatted as per the requirement of the chatter post",
+          "connector": {
+            "name": "date-time-helpers",
+            "version": "3.0"
+          },
+          "operation": "format",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "timezone": {
+              "type": "string",
+              "value": "UTC"
+            },
+            "date": {
+              "type": "jsonpath",
+              "value": "$.steps.trigger.event_body.LastReportedMileageDateFromVinReport"
+            },
+            "format": {
+              "type": "object",
+              "value": {
+                "custom_format": {
+                  "type": "string",
+                  "value": "MM/DD/YYYY"
+                }
+              }
+            }
+          }
+        },
+        "salesforce-2": {
+          "title": "Chatter - Only Mileage Issue",
+          "description": "Creating the chatter post body for scenario when only Mileage issue is found",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "create_record",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "fields": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Body"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "VIN report attached.\n\nPossible issues found.\n\n 1. Last recorded mileage was {$.steps.script-1.result.lastReported} on {$.steps.date-time-helpers-1.result}. Current estimated mileage is {$.steps.script-1.result.currentExpected}. Seller reported mileage is {$.steps.script-1.result.sellerReported}.\n"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "ParentId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-13.records[0].Id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "CreatedById"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.call-workflow-1.response.System_Id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "CreatedDate"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.date-time-helpers-2.result"
+                    }
+                  }
+                }
+              ]
+            },
+            "object": {
+              "type": "string",
+              "value": "FeedItem"
+            }
+          }
+        },
+        "salesforce-15": {
+          "title": "Uploading file from URL",
+          "description": "Uploading the file to Salesforce so that it can  be attached in the Chatter Post",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "upload_file",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "file": {
+              "type": "jsonpath",
+              "value": "$.steps.file-helpers-1.file"
+            }
+          }
+        },
+        "salesforce-3": {
+          "title": "Chatter - Only Salvage Issue",
+          "description": "Creating the chatter post body for scenario when only salvage issue is found",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "create_record",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "fields": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Body"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "VIN report attached\n\nPossible issues found.\n\n1. Salvage title detected.\n\n"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "ParentId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-13.records[0].Id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "CreatedById"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.call-workflow-1.response.System_Id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "CreatedDate"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.date-time-helpers-2.result"
+                    }
+                  }
+                }
+              ]
+            },
+            "object": {
+              "type": "string",
+              "value": "FeedItem"
+            }
+          }
+        },
+        "branch-1": {
+          "title": "Checking Event Name",
+          "description": "Branching to Check if Vin report generation failed or not",
+          "connector": {
+            "name": "branch",
+            "version": "1.2"
+          },
+          "operation": "simple",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "value": {
+              "type": "jsonpath",
+              "value": "$.steps.trigger.event_name"
+            },
+            "branches": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "value": {
+                      "type": "string",
+                      "value": "OfferVINReportGenerated"
+                    },
+                    "label": {
+                      "type": "string",
+                      "value": "Vin report generation successful "
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "value": {
+                      "type": "string",
+                      "value": "OfferVINReportGenerationFailed"
+                    },
+                    "label": {
+                      "type": "string",
+                      "value": "Vin report generation failed "
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "salesforce-9": {
+          "title": "Uploading file from URL",
+          "description": "Uploading the file to Salesforce so that it can  be attached in the Chatter Post",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "upload_file",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "file": {
+              "type": "jsonpath",
+              "value": "$.steps.file-helpers-1.file"
+            }
+          }
+        },
+        "salesforce-11": {
+          "title": "Uploading file from URL",
+          "description": "Uploading the file to Salesforce so that it can  be attached in the Chatter Post",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "upload_file",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "file": {
+              "type": "jsonpath",
+              "value": "$.steps.file-helpers-1.file"
+            }
+          }
+        },
+        "salesforce-14": {
+          "title": "Chatter - No issues",
+          "description": "Creating the chatter post body for scenario when only salvage issue is found",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "create_record",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "fields": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Body"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "VIN report attached.\r\n\r\n No issues found.\n"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "ParentId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-13.records[0].Id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "CreatedById"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.call-workflow-1.response.System_Id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "CreatedDate"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.date-time-helpers-2.result"
+                    }
+                  }
+                }
+              ]
+            },
+            "object": {
+              "type": "string",
+              "value": "FeedItem"
+            }
+          }
+        },
+        "date-time-helpers-3": {
+          "title": "Formatting FailedAt Time",
+          "description": "We will be formatting the Failed date and time in here to use it further in the process while adding chatter post",
+          "connector": {
+            "name": "date-time-helpers",
+            "version": "3.0"
+          },
+          "operation": "format",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "timezone": {
+              "type": "string",
+              "value": "UTC"
+            },
+            "date": {
+              "type": "jsonpath",
+              "value": "$.steps.trigger.event_body.FailedAt"
+            },
+            "format": {
+              "type": "object",
+              "value": {
+                "existing_format": {
+                  "type": "string",
+                  "value": "YYYY-MM-DDTHH:mm:ssZ"
+                }
+              }
+            }
+          }
+        },
+        "branch-2": {
+          "title": "Vin report error code?",
+          "description": "Branching the chatter posts based on the value of Vin error report code",
+          "connector": {
+            "name": "branch",
+            "version": "1.2"
+          },
+          "operation": "simple",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "value": {
+              "type": "jsonpath",
+              "value": "$.steps.trigger.event_body.VinReportErrorCode"
+            },
+            "branches": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "value": {
+                      "type": "string",
+                      "value": "NO_RECORDS"
+                    },
+                    "label": {
+                      "type": "string",
+                      "value": "No Records Found"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "label": {
+                      "type": "string",
+                      "value": "Invalid VIN"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "INVALID_VIN "
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "value": {
+                      "type": "string",
+                      "value": "REQUEST_TIMEOUT"
+                    },
+                    "label": {
+                      "type": "string",
+                      "value": "Request Timed Out"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "salesforce-10": {
+          "title": "Create Feed Attachment",
+          "description": "Creating feed attachment of the uploaded file to attach it in the Chatter Post",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "create_record",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "fields": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "RecordId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-9.id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "FeedEntityId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-2.id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Type"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "Content"
+                    }
+                  }
+                }
+              ]
+            },
+            "object": {
+              "type": "string",
+              "value": "FeedAttachment"
+            }
+          }
+        },
+        "salesforce-6": {
+          "title": "Chatter- No Records Found",
+          "description": "Adding Chatter Post for the scenario when Vin error report code is NO_RECORDS",
+          "connector": {
+            "name": "salesforce",
+            "version": "8.6"
+          },
+          "operation": "create_record",
+          "output_schema": {},
+          "error_handling": {},
+          "authentication": {
+            "group": "201b70c2-4820-42a9-b1dc-62d1e0342cf3",
+            "title": "Arjun Kansagara - Salesforce - Authentication - Version 1.0",
+            "service_icon": {
+              "icon_type": "url",
+              "value": "//s3.amazonaws.com/images.tray.io/static/service/icons/a8ff6c9514c35c853b350382534fb624.png"
+            },
+            "scopes": [
+              "visualforce",
+              "refresh_token",
+              "full",
+              "id",
+              "chatter_api",
+              "custom_permissions",
+              "api",
+              "openid",
+              "web"
+            ],
+            "service_name": "salesforce",
+            "service_version": 1
+          },
+          "properties": {
+            "fields": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "ParentId"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.salesforce-13.records[0].Id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "Body"
+                    },
+                    "value": {
+                      "type": "string",
+                      "value": "VIN report was not available."
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "CreatedById"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.call-workflow-1.response.System_Id"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "value": {
+                    "key": {
+                      "type": "string",
+                      "value": "CreatedDate"
+                    },
+                    "value": {
+                      "type": "jsonpath",
+                      "value": "$.steps.date-time-helpers-3.result"
+                    }
+                  }
+                }
+              ]
+            },
+            "object": {
+              "type": "string",
+              "value": "FeedItem"
+            }
+          }
+        },
+        "boolean-condition-3": {
+          "title": "Checking Salvage Issue",
+          "description": "Boolean condition to check if any Salvage issue exist in the VIN by fetching the value of HasTitleIssue Flag.",
+          "connector": {
+            "name": "boolean-condition",
+            "version": "2.3"
+          },
+          "operation": "boolean_condition",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "conditions": {
+              "type": "array",
+              "value": [
+                {
+                  "type": "object",
+                  "value": {
+                    "value1": {
+                      "type": "jsonpath",
+                      "value": "$.steps.trigger.event_body.HasTitleIssue"
+                    },
+                    "comparison_type": {
+                      "type": "string",
+                      "value": "==="
+                    },
+                    "value2": {
+                      "type": "string",
+                      "value": "true"
+                    }
+                  }
+                }
+              ]
+            },
+            "strictness": {
+              "type": "string",
+              "value": "All"
+            }
+          }
+        },
+        "date-time-helpers-2": {
+          "title": "Formatting GeneratedAt Time",
+          "description": "We will be formatting the Generated date and time in here to use it further in the process while adding chatter post",
+          "connector": {
+            "name": "date-time-helpers",
+            "version": "3.0"
+          },
+          "operation": "format",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "timezone": {
+              "type": "string",
+              "value": "UTC"
+            },
+            "date": {
+              "type": "jsonpath",
+              "value": "$.steps.trigger.event_body.GeneratedAt"
+            },
+            "format": {
+              "type": "object",
+              "value": {
+                "existing_format": {
+                  "type": "string",
+                  "value": "YYYY-MM-DDTHH:mm:ssZ"
+                }
+              }
+            }
+          }
+        },
+        "file-helpers-1": {
+          "title": "Download Attachment",
+          "description": "Downloading the file attachment from the URL received in the event",
+          "connector": {
+            "name": "file-helpers",
+            "version": "2.5"
+          },
+          "operation": "create_file",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {
+            "url": {
+              "type": "jsonpath",
+              "value": "$.steps.trigger.event_body.VinReportFileUrl"
+            },
+            "name": {
+              "type": "jsonpath",
+              "value": "$.steps.trigger.event_body.VinReportFileName"
+            },
+            "headers": {
+              "type": "object",
+              "value": {}
+            }
+          }
+        },
+        "trigger": {
+          "title": "Callable Trigger",
+          "connector": {
+            "name": "callable-trigger",
+            "version": "2.0"
+          },
+          "operation": "trigger",
+          "output_schema": {},
+          "error_handling": {},
+          "properties": {}
+        }
+      },
+      "dependencies": [
+        {
+          "id": "2a07badc-4e07-4854-a358-c1d7e2bdd6d5",
+          "name": "Salesforce - Configurations"
+        }
+      ]
+    }
+  ],
+  "projects": []
+}
