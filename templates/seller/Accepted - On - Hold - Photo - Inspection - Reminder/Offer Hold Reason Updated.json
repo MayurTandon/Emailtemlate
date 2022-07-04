@@ -1,0 +1,23 @@
+{
+  "charity_id": null,
+  "offer_city": "New York",
+  "offer_database_id": 941100,
+  "offer_expiration_at": "2022-04-22",
+  "offer_hold_reason": "SCHEDULING_REQUIRED",
+  "offer_id": 7942812,
+  "offer_make": "Ford",
+  "offer_model": "Fusion",
+  "offer_photo_upload_url": "https://staging-sell.peddle.com/email?toAddPhotos=true&login=t3WISDSRz1Kn9Aa61ZnAgbuTmaje6zoXmqB8TbJ56HQfMePDVA4PrTuyu00zunzapcTGYQwL9ObkaATkgoaYMKkpk2lIw%2bbX8bbJCynnRE7aM%2fj7%2fAl0KY2L4vD6LV6yq%2fqdR7zTMJM%3d",
+  "offer_presented_amount": 1320,
+  "offer_previous_hold_reason": "PHOTO_INSPECTION_REQUIRED",
+  "offer_salesforce_id": "0066t000006qILsAAM",
+  "offer_scheduled_at": null,
+  "offer_scheduled_end_at": null,
+  "offer_scheduled_start_at": null,
+  "offer_state": "NY",
+  "offer_status": "Accepted",
+  "offer_trim": "SEL",
+  "offer_url": "https://staging-sell.peddle.com/email?login=t3WISDSRz1Kn9Aa61ZnAgbYogsTxao67E9ucb5ccXlaglaftDAGY8OJZU%2f%2fzHRBvX87Dh1kDV9lWWndzD2UFCSFnCNsevsPUDdljbcRnCV6ILgbvJXCJW2kg893qG2GEfk4gNQ2v%2bmU%3d",
+  "offer_vin": "3FAHP0JA0BR150107",
+  "offer_year": 2011
+}

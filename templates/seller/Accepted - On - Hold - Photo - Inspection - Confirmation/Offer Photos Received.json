@@ -1,0 +1,16 @@
+{
+  "charity_id": null,
+  "offer_city": "Los Angeles",
+  "offer_database_id": 941091,
+  "offer_id": 7942803,
+  "offer_make": "Chrysler",
+  "offer_model": "300",
+  "offer_presented_amount": 2510,
+  "offer_salesforce_id": "0066t000006qIL4AAM",
+  "offer_state": "CA",
+  "offer_status": "Accepted",
+  "offer_trim": "Base",
+  "offer_url": "https://staging-sell.peddle.com/login?cmd=ViewOffer&OfferId=7942803",
+  "offer_vin": "2C3CCAAG0DH741163",
+  "offer_year": 2013
+}

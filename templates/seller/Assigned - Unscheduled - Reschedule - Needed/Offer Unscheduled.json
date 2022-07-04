@@ -1,0 +1,22 @@
+{
+  "carrier_company_name": "Bright Carrier",
+  "carrier_company_phone": "458-236-3536",
+  "carrier_type": "Peddle Carrier",
+  "charity_id": null,
+  "delivery_account_type": "Carrier",
+  "offer_city": "New York",
+  "offer_database_id": 940571,
+  "offer_id": 7942283,
+  "offer_make": "Chevrolet",
+  "offer_model": "Astro",
+  "offer_payment_method": "Paid on the spot",
+  "offer_presented_amount": 1175,
+  "offer_salesforce_id": "0066t000006qHRlAAM",
+  "offer_state": "NY",
+  "offer_status": "Assigned",
+  "offer_title_help_url": "https://staging-link.peddle.com/prepare-title-in-arkansas",
+  "offer_trim": "Base",
+  "offer_url": "https://staging-sell.peddle.com/login?cmd=ViewOffer&OfferId=7942283",
+  "offer_vin": "1GNEL19X73B130926",
+  "offer_year": 2003
+}

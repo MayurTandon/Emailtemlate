@@ -1,0 +1,21 @@
+{
+  "carrier_company_name": "Automation Carrier 2 - DO NOT UPDATE",
+  "carrier_company_phone": "311-111-1111",
+  "carrier_driver_first_name": "Jill",
+  "carrier_driver_last_name": "Doe",
+  "charity_id": null,
+  "offer_city": "New York",
+  "offer_database_id": 939410,
+  "offer_id": 7941122,
+  "offer_make": "Ford",
+  "offer_model": "Explorer",
+  "offer_payment_method": "Paid on the spot",
+  "offer_presented_amount": 600,
+  "offer_salesforce_id": "0066t000006qF41AAE",
+  "offer_state": "NY",
+  "offer_status": "Assigned",
+  "offer_trim": "NBX",
+  "offer_vin": "1FMZU63E35UC04406",
+  "offer_year": 2005,
+  "publisher_id": null
+}
